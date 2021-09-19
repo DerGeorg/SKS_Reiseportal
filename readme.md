@@ -15,3 +15,27 @@ After starting the Server, you can view the API in [Swagger - Sightseeing Server
 *Cron: 1 48 13 19 * ?*
 
 
+# Web App
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
