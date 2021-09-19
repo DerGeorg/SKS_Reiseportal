@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(value = "http://localhost:8081")
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 public class RestController {
