@@ -10,6 +10,14 @@ import java.util.Date;
 @Entity
 public class StatsEntity {
 
+    public StatsEntity(int id, Date pubDate, Long sightseeingID) {
+        this.id = id;
+        this.count = 0;
+        this.pubDate = pubDate;
+        this.sightseeingID = sightseeingID;
+    }
+
+
     @Id
     @Column(name = "articleid")
     private int id;
@@ -18,6 +26,9 @@ public class StatsEntity {
     private int count;
 
     private Date pubDate;
+
+    @Column(name = "sightseeingID")
+    private Long sightseeingID;
 
     public int getId() {
         return id;

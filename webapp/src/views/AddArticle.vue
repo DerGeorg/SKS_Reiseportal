@@ -62,7 +62,8 @@ export default {
       selectedSightseeingId: "",
       title: "",
       text: "",
-      author: ""
+      author: "",
+      newArticle: {}
     }
   },
   methods: {
@@ -76,8 +77,11 @@ export default {
       var authorUri = encodeURIComponent(this.author);
       var textUri = encodeURIComponent(this.text);
       var sightseeingIDUri = encodeURIComponent(this.selectedSightseeingId);
-      axios.post('http://localhost:8080/api/article?title='+titleUri+'&author='+authorUri+'&text='+textUri+'&sightseeingID='+sightseeingIDUri).catch(error => alert(error));
-      window.location.replace("http://localhost:8081/");
+      axios.post('http://localhost:8080/api/article?title='+titleUri+'&author='+authorUri+'&text='+textUri+'&sightseeingID='+sightseeingIDUri).then(res => {
+        alert('http://localhost:8071/api/article/'+res.data.id+'?sightseeingID='+sightseeingIDUri)
+        axios.post('http://localhost:8071/api/article/'+res.data.id+'?sightseeingID='+sightseeingIDUri).then(() => window.location.replace("http://localhost:8081/")).catch(err => alert(err));
+      }).catch(error => alert(error));
+
     }
   },
   mounted() {

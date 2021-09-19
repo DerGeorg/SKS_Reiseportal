@@ -7,20 +7,26 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@CrossOrigin(value = "http://localhost:8081")
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 public class RestController {
 
     @Autowired
     private StatsRepo statsRepo;
+
+    @Operation(summary = "Add article")
+    @RequestMapping(value = "/article/{id}", method = RequestMethod.POST)
+    private void addArticle(@PathVariable int id, @RequestParam Long sightseeingID){
+        StatsEntity newStat = new StatsEntity(id, new Date(), sightseeingID);
+        statsRepo.save(newStat);
+    }
 
     @Operation(summary = "Count +1 to given article id")
     @RequestMapping(value = "/article/{id}", method = RequestMethod.GET)
