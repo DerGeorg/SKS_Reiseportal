@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(value = "http://localhost:8081")
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 public class RestController {
@@ -23,7 +25,7 @@ public class RestController {
 
     @Operation(summary = "Get all Sightseeing")
     @RequestMapping(value = "/sightseeings", method = RequestMethod.GET, produces = "application/json")
-    private ResponseEntity<String> getAll(){
+    private ResponseEntity<String> getAllSightseeings(){
         List<SightseeingEntity> sightseeingEntityList = new ArrayList<>();
         sightseeingRepo.findAll().forEach(sightseeingEntityList::add);
         if (sightseeingEntityList.isEmpty()){

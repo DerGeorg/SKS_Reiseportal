@@ -22,7 +22,7 @@ public class ArticlesEntity {
     private String text;
     @Column(name = "author")
     private String author;
-    @Column(name = "sightseeingId", unique = true)
+    @Column(name = "sightseeingId")
     private Long sightseeingId;
 
     public ArticlesEntity() {
