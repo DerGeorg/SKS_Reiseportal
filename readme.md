@@ -10,3 +10,8 @@ After starting the Server, you can view the API in [Swagger - Stats Server](http
 ### API
 After starting the Server, you can view the API in [Swagger - Sightseeing Server](http://localhost:8061/swagger-ui.html)
 
+# Money Server
+*Scheduling every Month once*
+*Cron: 1 48 13 19 * ?*
+
+
