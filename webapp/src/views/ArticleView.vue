@@ -32,10 +32,10 @@ export default {
   },
   methods:{
     getData(){
-      axios.get('http://localhost:8080/api/article/'+ this.$route.params.id).then(response => {
+      axios.get('http://localhost:8080/api/article/'+ this.$route.params.id).then(response => { // article server
         // handle success
         this.article = response.data;
-        axios.get('http://localhost:8071/api/article/'+this.$route.params.id).catch(err => alert(err));
+        //axios.get('http://localhost:8071/api/article/'+this.$route.params.id).catch(err => alert(err)); // stats
       })
           .catch(error => {
             // handle error

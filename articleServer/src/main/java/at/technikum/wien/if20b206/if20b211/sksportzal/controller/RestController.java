@@ -27,6 +27,7 @@ public class RestController {
     @Operation(summary = "Gets all articles on the Article Server")
     @RequestMapping(value = "/articles", method = RequestMethod.GET, produces = "application/json")
     public String getArticles(){
+        assert articlesRepo.findAll() != null;
         return new Gson().toJson(articlesRepo.findAll());
     }
 

@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StatsServerApplication {
 
+    // TODO CONFIG aus dem Config server laden geht noch nicht config server ansich aber schon
     public static void main(String[] args) {
         SpringApplication.run(StatsServerApplication.class, args);
     }

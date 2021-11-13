@@ -6,6 +6,7 @@ import at.technikum.wien.if20b206.if20b211.statsserver.entity.StatsEntity;
 import com.google.gson.Gson;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,9 @@ public class RestController {
     @Autowired
     private StatsRepo statsRepo;
 
+    @Value(value = "${key.kafka.stats.create}")
+    private String KEY_STATSCREATE;
+
     @Operation(summary = "Add article")
     @RequestMapping(value = "/article/{id}", method = RequestMethod.POST)
     private void addArticleController(@PathVariable int id, @RequestParam Long sightseeingID){
@@ -37,6 +41,7 @@ public class RestController {
     public void addArticeKafkaListener(String data){
         System.out.println("Kafka Receive: " + data);
         System.out.println(data);
+        System.out.println(KEY_STATSCREATE);
         ArticlesEntity articlesEntity = new Gson().fromJson(data, ArticlesEntity.class);
         addArticle(articlesEntity.getId(), articlesEntity.getSightseeingId());
     }
