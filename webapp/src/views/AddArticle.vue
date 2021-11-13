@@ -83,7 +83,7 @@ export default {
 
        // TODO der call an den statsserver soll weg und dafür soll der article server per kafka einen msg an stats senden um auch im stats den eintrag zu erstellen
         // Es muss im article server der return als id für den article am stats server genommen werden und die sightseeingidUri wurde schon beim ersten call als param geschickt
-        axios.post('http://localhost:8071/api/article/'+res.data.id+'?sightseeingID='+sightseeingIDUri).then(() => window.location.replace("http://localhost:8081/")).catch(err => alert(err)); //statsServer
+        //axios.post('http://localhost:8071/api/article/'+res.data.id+'?sightseeingID='+sightseeingIDUri).then(() => window.location.replace("http://localhost:8081/")).catch(err => alert(err)); //statsServer
       }).catch(error => alert(error));
 
     }

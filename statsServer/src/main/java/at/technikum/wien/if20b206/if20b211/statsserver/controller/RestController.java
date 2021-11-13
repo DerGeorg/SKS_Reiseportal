@@ -1,6 +1,7 @@
 package at.technikum.wien.if20b206.if20b211.statsserver.controller;
 
 import at.technikum.wien.if20b206.if20b211.statsserver.data.StatsRepo;
+import at.technikum.wien.if20b206.if20b211.statsserver.entity.ArticlesEntity;
 import at.technikum.wien.if20b206.if20b211.statsserver.entity.StatsEntity;
 import com.google.gson.Gson;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,9 +24,21 @@ public class RestController {
 
     @Operation(summary = "Add article")
     @RequestMapping(value = "/article/{id}", method = RequestMethod.POST)
-    private void addArticle(@PathVariable int id, @RequestParam Long sightseeingID){
+    private void addArticleController(@PathVariable int id, @RequestParam Long sightseeingID){
+        addArticle(id, sightseeingID);
+    }
+
+    private void addArticle(int id, Long sightseeingID){
         StatsEntity newStat = new StatsEntity(id, new Date(), sightseeingID);
         statsRepo.save(newStat);
+    }
+
+    @org.springframework.kafka.annotation.KafkaListener(topics = "statscreate")
+    public void addArticeKafkaListener(String data){
+        System.out.println("Kafka Receive: " + data);
+        System.out.println(data);
+        ArticlesEntity articlesEntity = new Gson().fromJson(data, ArticlesEntity.class);
+        addArticle(articlesEntity.getId(), articlesEntity.getSightseeingId());
     }
 
     @Operation(summary = "Count +1 to given article id")
