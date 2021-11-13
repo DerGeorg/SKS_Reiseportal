@@ -25,18 +25,18 @@ public class MoneyServerApplication {
     private ArticlesRepo articlesRepo;
 
     //second, minute, hour, day of month, month, day(s) of week
-    @Scheduled(cron = "1 48 13 19 * ?")
+    @Scheduled(cron = "1 12 11 20 * ?")
     private void checkMoney(){
-        statsRepo.findAll().forEach(statsEntity -> {
+        statsRepo.findAll().forEach(statsEntity -> { // /api/stats/all get all stats --> for each diese steps
             if(articlesRepo.findById(statsEntity.getId()).isPresent()) {
-                ArticlesEntity articlesEntity = articlesRepo.findById(statsEntity.getId()).get();
-                String articleTitle = articlesEntity.getTitle();
-                String author = articlesEntity.getAuthor();
+                ArticlesEntity articlesEntity = articlesRepo.findById(statsEntity.getId()).get(); //zu jedem dieser stats holt er sich den article, mit der article id von statsEntity
+                String articleTitle = articlesEntity.getTitle(); //holt title
+                String author = articlesEntity.getAuthor(); //holt author
 
-                System.out.println("Author: " + author + " gets: " + statsEntity.getCount() + " for the article named: " + articleTitle);
+                System.out.println("Author: " + author + " gets: " + statsEntity.getCount() + " for the article named: " + articleTitle); //gibts aus
 
-                statsEntity.setCount(0);
-                statsRepo.save(statsEntity);
+                statsEntity.setCount(0); //counter in stats wieder auf 0 setzten
+                statsRepo.save(statsEntity); //stats in db aktualisieren
             }
         });
     }

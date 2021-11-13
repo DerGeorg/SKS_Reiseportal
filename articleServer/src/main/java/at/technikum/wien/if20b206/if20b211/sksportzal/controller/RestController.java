@@ -27,6 +27,7 @@ public class RestController {
     @RequestMapping(value = "/article/{id}", method = RequestMethod.GET, produces = "application/json")
     public String getArticle(@PathVariable Integer id){
         ArticlesEntity articlesEntity = articlesRepo.findById(id).get();
+        // TODO Statsserver +1 zählen per kafka
         return new Gson().toJson(articlesEntity);
     }
 
@@ -35,6 +36,10 @@ public class RestController {
     private ResponseEntity<String> addArticle(@RequestParam String title, @RequestParam String text, @RequestParam String author, @RequestParam Long sightseeingID){
         ArticlesEntity articlesEntity = new ArticlesEntity(title, text, author, sightseeingID);
         articlesRepo.save(articlesEntity);
+        // TODO hier soll der statsserver per kafka einen neuen eintrag machen um die stats zu speichern
+        // 1. Kafka publisher
+        // 2. Im stats einen consumer
+        // 3. Broker hosten oder starten nicht vergessen
         return ResponseEntity.ok(new Gson().toJson(articlesEntity));
     }
 }
