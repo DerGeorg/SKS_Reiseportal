@@ -13,7 +13,6 @@ public class ArticlesEntity {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "title")
