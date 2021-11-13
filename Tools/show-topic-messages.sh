@@ -6,5 +6,5 @@ cd kafka
 
 bin/kafka-console-consumer.sh \
 	--bootstrap-server localhost:$PORT_KAFKA \
-	--topic baeldung \
+	--topic statscreate \
 	--from-beginning

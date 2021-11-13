@@ -3,6 +3,7 @@ package at.technikum.wien.if20b206.if20b211.sksportzal.controller;
 
 import at.technikum.wien.if20b206.if20b211.sksportzal.data.ArticlesRepo;
 import at.technikum.wien.if20b206.if20b211.sksportzal.entity.ArticlesEntity;
+import at.technikum.wien.if20b206.if20b211.sksportzal.kafka.KafkaSender;
 import com.google.gson.Gson;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 public class RestController {
+
+    private final String KEY_STATSCREATE = "statscreate";
+
+    @Autowired
+    private KafkaSender kafkaSender;
 
     @Autowired
     private ArticlesRepo articlesRepo;
@@ -36,6 +42,7 @@ public class RestController {
     private ResponseEntity<String> addArticle(@RequestParam String title, @RequestParam String text, @RequestParam String author, @RequestParam Long sightseeingID){
         ArticlesEntity articlesEntity = new ArticlesEntity(title, text, author, sightseeingID);
         articlesRepo.save(articlesEntity);
+        kafkaSender.sendMessage(new Gson().toJson(articlesEntity), KEY_STATSCREATE);
         // TODO hier soll der statsserver per kafka einen neuen eintrag machen um die stats zu speichern
         // 1. Kafka publisher
         // 2. Im stats einen consumer
