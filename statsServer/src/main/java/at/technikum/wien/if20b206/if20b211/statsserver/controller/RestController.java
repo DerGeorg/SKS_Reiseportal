@@ -43,7 +43,11 @@ public class RestController {
 
     @Operation(summary = "Count +1 to given article id")
     @RequestMapping(value = "/article/{id}", method = RequestMethod.GET)
-    private ResponseEntity<String> count(@PathVariable int id){
+    private ResponseEntity<String> countController(@PathVariable int id){
+        return count(id);
+    }
+
+    private ResponseEntity<String> count(int id){
         if(statsRepo.findById(id).isPresent()) {
             StatsEntity statsToEdit = statsRepo.findById(id).get();
             statsToEdit.addCount();
@@ -52,6 +56,14 @@ public class RestController {
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ID: " + id + " not found");
         }
+    }
+
+
+    @org.springframework.kafka.annotation.KafkaListener(topics = "statscount")
+    private void countKafkaListener(String data){
+        System.out.println("Kafka receive :");
+        System.out.println(data);
+        count(Integer.parseInt(data));
     }
 
     @Operation(summary = "Get Stats from Month")

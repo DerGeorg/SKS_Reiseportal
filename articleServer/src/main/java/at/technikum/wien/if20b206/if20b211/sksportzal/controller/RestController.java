@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class RestController {
 
     private final String KEY_STATSCREATE = "statscreate";
+    private final String KEY_STATSCOUNT = "statscount";
 
     @Autowired
     private KafkaSender kafkaSender;
@@ -33,7 +34,7 @@ public class RestController {
     @RequestMapping(value = "/article/{id}", method = RequestMethod.GET, produces = "application/json")
     public String getArticle(@PathVariable Integer id){
         ArticlesEntity articlesEntity = articlesRepo.findById(id).get();
-        // TODO Statsserver +1 zählen per kafka
+        kafkaSender.sendMessage(id.toString(), KEY_STATSCOUNT);
         return new Gson().toJson(articlesEntity);
     }
 
@@ -43,10 +44,6 @@ public class RestController {
         ArticlesEntity articlesEntity = new ArticlesEntity(title, text, author, sightseeingID);
         articlesRepo.save(articlesEntity);
         kafkaSender.sendMessage(new Gson().toJson(articlesEntity), KEY_STATSCREATE);
-        // TODO hier soll der statsserver per kafka einen neuen eintrag machen um die stats zu speichern
-        // 1. Kafka publisher
-        // 2. Im stats einen consumer
-        // 3. Broker hosten oder starten nicht vergessen
         return ResponseEntity.ok(new Gson().toJson(articlesEntity));
     }
 }
