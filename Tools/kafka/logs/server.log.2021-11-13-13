@@ -1,0 +1,3 @@
+[2021-11-13 13:07:40,759] INFO [GroupCoordinator 0]: Member[group.instance.id None, member.id consumer-myGroup-1-cdc76cc7-25d9-4783-bd5a-e603bb79dd6c] in group myGroup has left, removing it from the group (kafka.coordinator.group.GroupCoordinator)
+[2021-11-13 13:07:40,759] INFO [GroupCoordinator 0]: Preparing to rebalance group myGroup in state PreparingRebalance with old generation 1 (__consumer_offsets-17) (reason: removing member consumer-myGroup-1-cdc76cc7-25d9-4783-bd5a-e603bb79dd6c on LeaveGroup) (kafka.coordinator.group.GroupCoordinator)
+[2021-11-13 13:07:40,759] INFO [GroupCoordinator 0]: Group myGroup with generation 2 is now empty (__consumer_offsets-17) (kafka.coordinator.group.GroupCoordinator)
