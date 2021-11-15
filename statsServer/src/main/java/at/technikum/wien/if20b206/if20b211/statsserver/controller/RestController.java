@@ -23,7 +23,7 @@ public class RestController {
     @Autowired
     private StatsRepo statsRepo;
 
-    @Value(value = "${key.kafka.stats.create}")
+//    @Value(value = "${key.kafka.stats.create}")
     private String KEY_STATSCREATE;
 
     @Operation(summary = "Add article")
