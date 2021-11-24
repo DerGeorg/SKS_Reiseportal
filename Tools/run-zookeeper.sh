@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source set-environment.sh
+source ./set-environment.sh
 
 export KAFKA_OPTS=-Dzookeeper.admin.enableServer=false
 
