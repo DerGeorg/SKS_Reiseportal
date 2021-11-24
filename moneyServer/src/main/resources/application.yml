@@ -1,0 +1,12 @@
+server:
+  port: 8051
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:mariadb://sks.db.dergeorg.at:3307/sks
+    username: sksuser
+    password: sksuserpw
+    driver-class-name: org.mariadb.jdbc.Driver
