@@ -1,3 +1,16 @@
+# Config Server
+*Manages all configs for all the microservices*
+
+### Features
+* Article Server Config
+* Stats Server Config
+* Sightseeing Server Config
+* Money Server Config
+#### Port
+```
+8888
+```
+
 
 # Article Server
 *Manages all articles*
