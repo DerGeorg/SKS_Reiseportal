@@ -1,22 +1,7 @@
-server:
-  port: 8071
-
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:mariadb://sks.db.dergeorg.at:3307/sks
-    username: sksuser
-    password: sksuserpw
-    driver-class-name: org.mariadb.jdbc.Driver
-  kafka:
-    bootstrap-servers: localhost:9092
-    consumer:
-      group-id: myGroup
   application:
-    name: config-client
+    name: statsserver
   profiles:
-    active: development
+    active: default
   config:
     import: configserver:http://localhost:8888

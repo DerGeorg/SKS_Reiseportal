@@ -1,13 +1,23 @@
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:mariadb://sks.db.dergeorg.at:3307/sks
-    username: sksuser
-    password: sksuserpw
-    driver-class-name: org.mariadb.jdbc.Driver
-  kafka:
-    bootstrap-servers: localhost:9092
-    consumer:
-      group-id: myGroup
+  application:
+    name: articleserver
+  profiles:
+    active: default
+  config:
+    import: configserver:http://localhost:8888
+
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#  datasource:
+#    url: jdbc:mariadb://sks.db.dergeorg.at:3307/sks
+#    username: sksuser
+#    password: sksuserpw
+#    driver-class-name: org.mariadb.jdbc.Driver
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#    consumer:
+#      group-id: myGroup
+#encrypt:
+#  key: sksuserpw
