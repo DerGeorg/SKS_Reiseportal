@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(value = "http://localhost:8081")
+//@CrossOrigin(value = "*")
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 public class RestController {

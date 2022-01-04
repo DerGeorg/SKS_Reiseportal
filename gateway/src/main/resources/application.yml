@@ -1,0 +1,48 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: reiseportalgateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: articleroute
+          uri: lb://ARTICLESERVER
+          predicates:
+            - Path=/articleserver/**
+          filters:
+            - RewritePath=/articleserver(?<segment>.*), /api/$\{segment}
+        - id: statsroute
+          uri: lb://STATSSERVER
+          predicates:
+            - Path=/statsserver/**
+          filters:
+            - RewritePath=/statsserver(?<segment>.*), /api/$\{segment}
+        - id: sightseeingroute
+          uri: lb://SIGHTSEEINGSERVER
+          predicates:
+            - Path=/sightseeingserver/**
+          filters:
+            - RewritePath=/sightseeingserver(?<segment>.*), /api/$\{segment}
+      globalcors:
+        cors-configurations:
+          "[/**]":
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+
+eureka:
+  client:
+    register-with-eureka: false
+    registry-fetch-interval-seconds: 5
+    # fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway

@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     getSightseeingData(){
-      axios.get('http://localhost:8061/api/sightseeings').then(res => {
+      axios.get('http://localhost:5555/sightseeingserver/sightseeings').then(res => {
         this.sightseeings = res.data;
       }).catch(err => alert(err));
     },
@@ -77,7 +77,7 @@ export default {
       var authorUri = encodeURIComponent(this.author);
       var textUri = encodeURIComponent(this.text);
       var sightseeingIDUri = encodeURIComponent(this.selectedSightseeingId);
-      axios.post('http://localhost:8080/api/article?title='+titleUri+'&author='+authorUri+'&text='+textUri+'&sightseeingID='+sightseeingIDUri).then(() => { //Article Server
+      axios.post('http://localhost:5555/articleserver/article?title='+titleUri+'&author='+authorUri+'&text='+textUri+'&sightseeingID='+sightseeingIDUri).then(() => { //Article Server
         window.location.replace("http://localhost:8081/")
       }).catch(error => alert(error));
 

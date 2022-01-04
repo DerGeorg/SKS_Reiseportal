@@ -11,6 +11,6 @@ spring:
     password: sksuserpw
     driver-class-name: org.mariadb.jdbc.Driver
   kafka:
-    bootstrap-servers: ts.dergeorg.at:9092
+    bootstrap-servers: localhost:9092
     consumer:
       group-id: myGroup
