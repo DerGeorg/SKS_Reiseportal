@@ -1,11 +1,11 @@
 <template>
     <div class="stats">
-        <div class="content">
-            <md-select v-model="statType" id="statType">
+          <md-field id="filter">
+            <md-select v-model="statType" id="statType" namen="statType">
                 <md-option value="month">This month</md-option>
                 <md-option value="all">All articles</md-option>
             </md-select>
-        </div>
+          </md-field>
         <div class="md-layout md-gutter md-alignment-center">
             <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100" v-for="(stat, a) in this.orderedStats" v-bind:key="a">
                 <StatComponent @click.native="openStat(stat.id)" v-bind:stat="stat"></StatComponent>
@@ -63,7 +63,7 @@
 </script>
 
 <style scoped>
-    .content{
+    #filter{
         margin: auto 20px auto 50px;
         margin-left: auto;
         margin-right: auto;
