@@ -33,9 +33,10 @@ public class RestController {
 
     @Operation(summary = "Get one Article by id")
     @RequestMapping(value = "/article/{id}", method = RequestMethod.GET, produces = "application/json")
-    public String getArticle(@PathVariable Integer id){
+    public String getArticle(@PathVariable Integer id, @RequestParam (required = false) boolean doNotCount){
         ArticlesEntity articlesEntity = articlesRepo.findById(id).get();
-        kafkaSender.sendMessage(id.toString(), KEY_STATSCOUNT);
+        if(!doNotCount)
+            kafkaSender.sendMessage(id.toString(), KEY_STATSCOUNT);
         return new Gson().toJson(articlesEntity);
     }
 

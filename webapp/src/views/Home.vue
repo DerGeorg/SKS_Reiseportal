@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     getData(){
-      axios.get('http://localhost:8080/api/articles').then(response => {
+      axios.get('http://localhost:5555/articleserver/articles').then(response => {
         // handle success
        this.articles = response.data;
       })
