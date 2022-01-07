@@ -8,7 +8,7 @@
           </md-field>
         <div class="md-layout md-gutter md-alignment-center">
             <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100" v-for="(stat, a) in this.orderedStats" v-bind:key="a">
-                <StatComponent @click.native="openStat(stat.id)" v-bind:stat="stat"></StatComponent>
+                <StatComponent @click.native="openArticle(stat.id)" v-bind:stat="stat"></StatComponent>
             </div>
         </div>
     </div>
@@ -40,7 +40,10 @@
                 axios.get('http://localhost:5555/statsserver/stats/all')
                     .then(r=> {this.stats = r.data})
                     .catch(error => alert(error));
-            }
+            },
+          openArticle(id){
+            this.$router.push({path:'/article/' + id})
+          }
         },
         mounted(){
             this.statType = "all";
@@ -64,7 +67,6 @@
 
 <style scoped>
     #filter{
-        margin: auto 20px auto 50px;
         margin-left: auto;
         margin-right: auto;
         width: 10%;

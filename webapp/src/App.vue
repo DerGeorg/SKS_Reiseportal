@@ -5,7 +5,7 @@
       <router-link to="/article">Add Article</router-link> |
       <router-link to="/stats">Stats</router-link>
     </div>
-    <router-view/>
+    <router-view id="content"/>
   </div>
 </template>
 
@@ -29,5 +29,10 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+#content {
+  margin-left: 10%;
+  margin-right: 10%;
 }
 </style>

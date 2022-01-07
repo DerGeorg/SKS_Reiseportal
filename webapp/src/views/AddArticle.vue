@@ -4,7 +4,7 @@
 
   <h1>Add Article</h1>
 
-  <md-table id="table">
+  <md-table>
     <md-table-row>
       <md-table-cell>
         <md-label for="name">Titel</md-label>
@@ -91,8 +91,4 @@ export default {
 
 <style scoped>
 
-#table{
-  margin-left: 10%;
-  margin-right: 10%;
-}
 </style>
