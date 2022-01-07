@@ -1,3 +1,7 @@
+![all](https://user-images.githubusercontent.com/22521386/148586261-4da9b1e7-75ad-425f-82d5-ada493332002.jpeg)
+![db](https://user-images.githubusercontent.com/22521386/148586265-22829d4e-1cee-4e5f-b20e-191c9f241f9d.jpeg)
+
+
 # Gateway Server
 Spring cloud Gateway with round-robbin Load Balancer strategy
 
