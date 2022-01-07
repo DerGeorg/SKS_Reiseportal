@@ -18,9 +18,9 @@ Spring cloud Gateway with round-robbin Load Balancer strategy
 ### Routes
 | Service           | Route                                       |
 |-------------------|---------------------------------------------|
-| Articleserver     | http://localhost:5555/articleserver/....    |
-| Sightseeingserver | http://localhost:5555/sightseeingserver/... |
-| Statsserver       | http://localhost:5555/statsserver/...       |
+| Articleserver     | http://localhost:5555/articleserver/ [article, articles, article/{id}]    |
+| Sightseeingserver | http://localhost:5555/sightseeingserver/ [sightseeings, sightseeings/{id}] |
+| Statsserver       | http://localhost:5555/statsserver/ [article/{id}, stats/month, stats/all, stat/{id}]       |
 
 > :warning: Gateway is forwarding to http://localhost:<PortOfService>/api/<RouteOfService>
 
@@ -57,6 +57,9 @@ Service registry
 
 # Article Server
 *Manages all articles*
+  
+### Routes
+![article_routes](https://user-images.githubusercontent.com/22521386/148588676-c1cf7155-f593-4e6c-a969-3535d8b7d32e.png)
 
 ### Features
 * Adding Article
@@ -70,6 +73,12 @@ After starting the Server, you can view the API in [Swagger - Article Server](ht
 
 # Stats Server
 *Manages all the stats*
+  
+### Routes
+![stats_routes](https://user-images.githubusercontent.com/22521386/148588728-182f337f-85c2-4b9f-b70f-d07ca5943a61.png)
+
+  
+  
 ### Features
 * Adding Article
 * Get Stats (month, all, byID)
@@ -83,6 +92,12 @@ After starting the Server, you can view the API in [Swagger - Stats Server](http
 
 # Sightseeing Server
 *Manages all the sightseeing entrys*
+  
+### Routes
+![sightseeings_routes](https://user-images.githubusercontent.com/22521386/148588754-2057cf6d-67af-4dc6-9193-d5f4b1a6b948.png)
+
+
+  
 ### Features
 * Get Sightseeing Entry (all, byID)
 ### API
