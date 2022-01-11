@@ -25,7 +25,7 @@ public class MoneyServerApplication {
     private ArticlesRepo articlesRepo;
 
     //second, minute, hour, day of month, month, day(s) of week
-    @Scheduled(cron = "1 12 11 20 * ?")
+    @Scheduled(cron = "1 53 10 11 * ?")
     private void checkMoney(){
         statsRepo.findAll().forEach(statsEntity -> { // /api/stats/all get all stats --> for each diese steps
             if(articlesRepo.findById(statsEntity.getId()).isPresent()) {
