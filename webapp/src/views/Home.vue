@@ -3,12 +3,19 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
     <div class="md-layout md-gutter md-alignment-center">
-      <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100" v-for="(article, a) in this.articles" v-bind:key="a">
-        <ArticleComponent @click.native="openArticle(article.id)" v-bind:article="article"></ArticleComponent>
+      <div class="md-layout-item md-xlarge-size-30 md-large-size-35 md-medium-size-40 md-small-size-45 md-xsmall-size-100" v-for="(article, a) in this.articles" v-bind:key="a">
+        <ArticleComponent style="min-height: 20em" @click.native="openArticle(article.id)" v-bind:article="article"></ArticleComponent>
       </div>
     </div>
   </div>
 </template>
+
+<style>
+.md-layout-item {
+  margin: 1%;
+}
+
+</style>
 
 <script>
 // @ is an alias to /src

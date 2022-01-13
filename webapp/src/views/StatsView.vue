@@ -1,14 +1,16 @@
 <template>
-    <div class="stats">
-          <md-field id="filter">
-            <md-select v-model="statType" id="statType" namen="statType">
-                <md-option value="month">This month</md-option>
-                <md-option value="all">All articles</md-option>
-            </md-select>
-          </md-field>
+    <div>
+      <div>
+        <md-field id="filter">
+          <md-select v-model="statType" id="statType" namen="statType">
+            <md-option value="month">This month</md-option>
+            <md-option value="all">All articles</md-option>
+          </md-select>
+        </md-field>
+      </div>
         <div class="md-layout md-gutter md-alignment-center">
-            <div class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100" v-for="(stat, a) in this.orderedStats" v-bind:key="a">
-                <StatComponent @click.native="openArticle(stat.id)" v-bind:stat="stat"></StatComponent>
+            <div class="md-layout-item md-xlarge-size-30 md-large-size-40 md-medium-size-45 md-small-size-50 md-xsmall-size-100" v-for="(stat, a) in this.orderedStats" v-bind:key="a">
+                <StatComponent style="min-height: 15em" @click.native="openArticle(stat.id)" v-bind:stat="stat"></StatComponent>
             </div>
         </div>
     </div>

@@ -1,19 +1,17 @@
 
 <template>
-    <div>
-        <md-card md-with-hover>
-            <md-ripple>
-                <md-card-header>
-                    <div class="md-title">{{article.title}}</div>
-                    <div class="md-subhead">Written by: {{article.author||'unknown'}}</div>
-                </md-card-header>
+    <md-card md-with-hover>
+        <md-ripple>
+            <md-card-header>
+                <div class="md-title">{{article.title}}</div>
+                <div class="md-subhead">Written by: {{article.author||'unknown'}}</div>
+            </md-card-header>
 
-                <md-card-content>
-                    This article was written about {{sightseeing.name||'unknown'}} and has been {{stat.count||'undefined'}} times read.
-                </md-card-content>
-            </md-ripple>
-        </md-card>
-    </div>
+            <md-card-content>
+                This article was written about <b>{{sightseeing.name||'unknown'}}</b> and has been {{stat.count||'undefined'}} times read.
+            </md-card-content>
+        </md-ripple>
+    </md-card>
 </template>
 
 <script>
