@@ -1,5 +1,7 @@
 package at.technikum.wien.if20b206.if20b211.sksportzal.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,8 @@ public class ArticlesEntity {
         this.text = text;
         this.author = author;
         this.sightseeingId = sightseeingId;
+
+        //TODO Prepeared statements
     }
 
     @Id
